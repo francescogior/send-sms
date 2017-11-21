@@ -3,7 +3,7 @@ const path = require('path')
 const request = require('request')
 const fs = require('fs')
 
-const { bitlyToken, burstApiKey, burstApiSecret } =  JSON.parse(fs.readFileSync('../.env', 'utf8'));
+const { bitlyToken, burstApiKey, burstApiSecret } =  JSON.parse(fs.readFileSync('./.env', 'utf8'));
 
 const bitlyEndpoint = 'https://api-ssl.bitly.com/v3/shorten'
 const burstEndpoint = 'https://api.transmitsms.com/send-sms.json'
@@ -30,5 +30,5 @@ app.get('/sms', ({ query }, res) => {
   }
 })
 
-app.use(express.static(path.resolve(__dirname, '../client/build')))
+app.use(express.static(path.resolve(__dirname, './client/build')))
 app.listen(process.env.PORT || 3000)
